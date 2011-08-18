@@ -1,6 +1,5 @@
 /*
 
-UnitGroup class from BWSAL
 http://code.google.com/p/bwsal/
 
 The MIT License (MIT)

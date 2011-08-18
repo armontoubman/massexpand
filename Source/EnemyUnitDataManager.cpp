@@ -196,3 +196,21 @@ int EnemyUnitDataManager::count(BWAPI::UnitType unittype)
 	}
 	return result;
 }
+
+EnemyUnitMap EnemyUnitDataManager::getMap()
+{
+	return this->unitmap;
+}
+
+EnemyUnitMap EnemyUnitDataManager::mapIsFlyer(EnemyUnitMap map)
+{
+	EnemyUnitMap result;
+	for each(std::pair<Unit*, EnemyUnitData> pair in map)
+	{
+		if(pair.second.unitType.isFlyer())
+		{
+			result[pair.first] = pair.second;
+		}
+	}
+	return result;
+}
