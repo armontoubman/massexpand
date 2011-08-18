@@ -33,6 +33,9 @@ public:
 
 	int count(BWAPI::UnitType unittype);
 
+	EnemyUnitMap getMap();
+	EnemyUnitMap mapIsFlyer(EnemyUnitMap map);
+
 	std::string chat();
 private:
 	HighCommand* hc;

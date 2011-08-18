@@ -138,7 +138,7 @@ void ProductionManager::updateListsAgainstProtossReinforcements()
 	if(nrOfEnemy(BWAPI::UnitTypes::Protoss_Zealot) > 6)
 	{
 	
-		if( (nrOfEnemy(BWAPI::UnitTypes::Protoss_Shuttle) > 0) || this->eudm->mapAirSize(this->eudm->enemyUnitsMap) >4)
+		if( (nrOfEnemy(BWAPI::UnitTypes::Protoss_Shuttle) > 0) || this->hc->eudm->mapIsFlyer(this->hc->eudm->getMap()).size() >4)
 		{
 		
 			if( nrOfOwn(BWAPI::UnitTypes::Zerg_Hydralisk) > 9 || nrOfOwn(BWAPI::UnitTypes::Zerg_Mutalisk)>0)
