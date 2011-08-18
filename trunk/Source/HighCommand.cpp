@@ -237,7 +237,7 @@ void HighCommand::drawRightPanel()
 
 	Broodwar->drawTextScreen(x,yoffset+y*line, "", true);
 	line++;
-	Broodwar->drawTextScreen(x,yoffset+y*line,"BuildList");
+	Broodwar->drawTextScreen(x,yoffset+y*line,"BuildList %i", this->pm->getStep());
 	line++;
 	for each(Product p in this->pm->getBuildList()->productList)
 	{
@@ -252,4 +252,17 @@ void HighCommand::drawRightPanel()
 		Broodwar->drawTextScreen(x,yoffset+y*line,"%d %s",c.drone, c.unittype.getName().c_str());
 		line++;
     }
+
+	x = 400;
+	line = 1;
+	Broodwar->drawTextScreen(x,yoffset+y*line, "", true);
+	line++;
+	Broodwar->drawTextScreen(x,yoffset+y*line,"Counters");
+	line++;
+	//for each(std::pair<BWAPI::UnitType, int> pair in this->pm->getBuildList()->unittypeCounter)
+	//{
+		//Broodwar->drawTextScreen(x,yoffset+y*line,"%s %i",pair.first.getName().c_str(), pair.second);
+		//line++;
+	//}
+	Broodwar->drawTextScreen(x,yoffset+y*line,"%i expands", this->pm->getBuildList()->expandCounter);
 }

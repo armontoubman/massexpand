@@ -1,6 +1,7 @@
 #pragma once
 #include <BWAPI.h>
 #include "UnitGroup.h"
+
 class HighCommand;
 
 class DroneMicro;

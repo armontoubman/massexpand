@@ -13,6 +13,7 @@ public:
 	void update();
 	ProductList* getWantList();
 	ProductList* getBuildList();
+	int getStep();
 private:
 	HighCommand* hc;
 	ProductList wantList;
