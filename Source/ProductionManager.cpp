@@ -23,6 +23,11 @@ ProductList* ProductionManager::getBuildList()
 	return &(this->buildList);
 }
 
+int ProductionManager::getStep()
+{
+	return this->step;
+}
+
 void ProductionManager::update()
 {
 	updateLists();
@@ -449,13 +454,25 @@ void ProductionManager::updateListsGeneral()
 	if( BWAPI::Broodwar->self()->minerals() >= 1500 )
 	{
 		buildExpand();
-		addBuild(BWAPI::UnitTypes::Zerg_Zergling,5);
+		if(buildList.count(BWAPI::UnitTypes::Zerg_Zergling) < 5)
+		{
+			addBuild(BWAPI::UnitTypes::Zerg_Zergling);
+		}
 	}
 	if( BWAPI::Broodwar->self()->gas() >= 1000 )
 	{
-		addBuild(BWAPI::UnitTypes::Zerg_Mutalisk,3);
-		addBuild(BWAPI::UnitTypes::Zerg_Defiler,3);
-		addBuild(BWAPI::UnitTypes::Zerg_Hydralisk,3);
+		if(buildList.count(BWAPI::UnitTypes::Zerg_Mutalisk) < 3)
+		{
+			addBuild(BWAPI::UnitTypes::Zerg_Mutalisk);
+		}
+		if(buildList.count(BWAPI::UnitTypes::Zerg_Defiler) < 3)
+		{
+			addBuild(BWAPI::UnitTypes::Zerg_Defiler);
+		}
+		if(buildList.count(BWAPI::UnitTypes::Zerg_Hydralisk) < 3)
+		{
+			addBuild(BWAPI::UnitTypes::Zerg_Hydralisk);
+		}
 	}
 
 	if( nrOfOwn(BWAPI::UnitTypes::Zerg_Larva) == 0 && buildList.countUnits() > 2 && BWAPI::Broodwar->self()->minerals() >= 500 && !buildList.containsExpand() && this->hc->ctm->countExpand() == 0 && nrOfExtraDronesRequired()<3)

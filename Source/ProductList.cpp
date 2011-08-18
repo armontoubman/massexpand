@@ -180,7 +180,7 @@ void ProductList::incrementCounter(Product b)
 	{
 		this->upgradetypeCounter[b.upgradetype] = this->upgradetypeCounter[b.upgradetype]+1;
 	}
-	if(b.type = ExpandProduct)
+	if(b.type == ExpandProduct)
 	{
 		this->expandCounter = this->expandCounter+1;
 	}
@@ -200,7 +200,7 @@ void ProductList::decrementCounter(Product b)
 	{
 		this->upgradetypeCounter[b.upgradetype] = this->upgradetypeCounter[b.upgradetype]-1;
 	}
-	if(b.type = ExpandProduct)
+	if(b.type == ExpandProduct)
 	{
 		this->expandCounter = this->expandCounter-1;
 	}
