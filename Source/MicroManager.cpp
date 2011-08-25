@@ -6,6 +6,7 @@
 #include "HighCommand.h"
 
 #include "DroneMicro.h"
+#include "HydraliskMicro.h"
 #include "OverlordMicro.h"
 #include "ZerglingMicro.h"
 
@@ -14,6 +15,7 @@ MicroManager::MicroManager(HighCommand* h)
 	this->hc = h;
 
 	this->droneMicro = new DroneMicro(h);
+	this->hydraliskMicro = new HydraliskMicro(h);
 	this->overlordMicro = new OverlordMicro(h);
 	this->zerglingMicro = new ZerglingMicro(h);
 }
@@ -41,6 +43,11 @@ void MicroManager::selectMicro(BWAPI::Unit* unit)
 	if(unit->getType() == BWAPI::UnitTypes::Zerg_Drone)
 	{
 		this->droneMicro->micro(unit);
+		return;
+	}
+	if(unit->getType() == BWAPI::UnitTypes::Zerg_Hydralisk)
+	{
+		this->hydraliskMicro->micro(unit);
 		return;
 	}
 	if(unit->getType() == BWAPI::UnitTypes::Zerg_Overlord)
