@@ -9,6 +9,7 @@ class DroneMicro;
 class HydraliskMicro;
 class LurkerMicro;
 class OverlordMicro;
+class ScourgeMicro;
 class UltraliskMicro;
 class ZerglingMicro;
 
@@ -31,6 +32,7 @@ private:
 	HydraliskMicro* hydraliskMicro;
 	LurkerMicro* lurkerMicro;
 	OverlordMicro* overlordMicro;
+	ScourgeMicro* scourgeMicro;
 	UltraliskMicro* ultraliskMicro;
 	ZerglingMicro* zerglingMicro;
 

@@ -109,7 +109,10 @@
       <Filter>Source Files\micro</Filter>
     </ClCompile>
     <ClCompile Include="Source\UltraliskMicro.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\micro</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ScourgeMicro.cpp">
+      <Filter>Source Files\micro</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -191,17 +194,20 @@
     <ClInclude Include="Source\MutaliskMicro.h">
       <Filter>Header Files\micro</Filter>
     </ClInclude>
-    <ClInclude Include="Source\HydraliskMicro.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Source\DefilerMicro.h">
       <Filter>Header Files\micro</Filter>
     </ClInclude>
     <ClInclude Include="Source\LurkerMicro.h">
       <Filter>Header Files\micro</Filter>
     </ClInclude>
+    <ClInclude Include="Source\HydraliskMicro.h">
+      <Filter>Header Files\micro</Filter>
+    </ClInclude>
     <ClInclude Include="Source\UltraliskMicro.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\micro</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ScourgeMicro.h">
+      <Filter>Header Files\micro</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
