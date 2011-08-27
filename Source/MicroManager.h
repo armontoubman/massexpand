@@ -9,6 +9,7 @@ class DroneMicro;
 class HydraliskMicro;
 class LurkerMicro;
 class OverlordMicro;
+class UltraliskMicro;
 class ZerglingMicro;
 
 using namespace BWAPI;
@@ -30,6 +31,7 @@ private:
 	HydraliskMicro* hydraliskMicro;
 	LurkerMicro* lurkerMicro;
 	OverlordMicro* overlordMicro;
+	UltraliskMicro* ultraliskMicro;
 	ZerglingMicro* zerglingMicro;
 
 	void selectMicro(BWAPI::Unit* unit);
