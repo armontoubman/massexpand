@@ -7,6 +7,7 @@ class HighCommand;
 class DefilerMicro;
 class DroneMicro;
 class HydraliskMicro;
+class LurkerMicro;
 class OverlordMicro;
 class ZerglingMicro;
 
@@ -27,6 +28,7 @@ private:
 	DefilerMicro* defilerMicro;
 	DroneMicro* droneMicro;
 	HydraliskMicro* hydraliskMicro;
+	LurkerMicro* lurkerMicro;
 	OverlordMicro* overlordMicro;
 	ZerglingMicro* zerglingMicro;
 

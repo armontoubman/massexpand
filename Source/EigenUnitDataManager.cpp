@@ -62,3 +62,8 @@ void EigenUnitDataManager::onUnitMorph(Unit* u)
 void EigenUnitDataManager::onUnitRenegade(Unit* u)
 {
 }
+
+bool EigenUnitDataManager::unitIsSeen(Unit* u)
+{
+	return this->unitmap[u].seenByEnemy;
+}
