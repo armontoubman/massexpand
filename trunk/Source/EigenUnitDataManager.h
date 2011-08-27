@@ -25,6 +25,8 @@ public:
 	void onUnitMorph(Unit* u);
 	void onUnitRenegade(Unit* u);
 
+	bool unitIsSeen(Unit* u);
+
 	std::string chat();
 private:
 	HighCommand* hc;
