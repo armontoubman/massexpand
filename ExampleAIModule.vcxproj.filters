@@ -102,6 +102,9 @@
     <ClCompile Include="Source\HydraliskMicro.cpp">
       <Filter>Source Files\micro</Filter>
     </ClCompile>
+    <ClCompile Include="Source\DefilerMicro.cpp">
+      <Filter>Source Files\micro</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\ExampleAIModule.h">
@@ -184,6 +187,9 @@
     </ClInclude>
     <ClInclude Include="Source\HydraliskMicro.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\DefilerMicro.h">
+      <Filter>Header Files\micro</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
