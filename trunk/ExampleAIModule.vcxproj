@@ -129,6 +129,7 @@
     <ClCompile Include="Source\OverlordMicro.cpp" />
     <ClCompile Include="Source\ProductionManager.cpp" />
     <ClCompile Include="Source\ResourceManager.cpp" />
+    <ClCompile Include="Source\ScourgeMicro.cpp" />
     <ClCompile Include="Source\TaskAssigner.cpp" />
     <ClCompile Include="Source\Task.cpp" />
     <ClCompile Include="Source\TaskManager.cpp" />
@@ -160,6 +161,7 @@
     <ClInclude Include="Source\ProductionManager.h" />
     <ClInclude Include="Source\ProductList.h" />
     <ClInclude Include="Source\ResourceManager.h" />
+    <ClInclude Include="Source\ScourgeMicro.h" />
     <ClInclude Include="Source\TaskAssigner.h" />
     <ClInclude Include="Source\RectangleArray.h" />
     <ClInclude Include="Source\Task.h" />

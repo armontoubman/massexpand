@@ -10,6 +10,7 @@
 #include "HydraliskMicro.h"
 #include "LurkerMicro.h"
 #include "OverlordMicro.h"
+#include "ScourgeMicro.h"
 #include "UltraliskMicro.h"
 #include "ZerglingMicro.h"
 
@@ -22,6 +23,7 @@ MicroManager::MicroManager(HighCommand* h)
 	this->hydraliskMicro = new HydraliskMicro(h);
 	this->lurkerMicro = new LurkerMicro(h);
 	this->overlordMicro = new OverlordMicro(h);
+	this->scourgeMicro = new ScourgeMicro(h);
 	this->ultraliskMicro = new UltraliskMicro(h);
 	this->zerglingMicro = new ZerglingMicro(h);
 }
@@ -69,6 +71,11 @@ void MicroManager::selectMicro(BWAPI::Unit* unit)
 	if(unit->getType() == BWAPI::UnitTypes::Zerg_Overlord)
 	{
 		this->overlordMicro->micro(unit);
+		return;
+	}
+	if(unit->getType() == BWAPI::UnitTypes::Zerg_Scourge)
+	{
+		this->scourgeMicro->micro(unit);
 		return;
 	}
 	if(unit->getType() == BWAPI::UnitTypes::Zerg_Ultralisk)
