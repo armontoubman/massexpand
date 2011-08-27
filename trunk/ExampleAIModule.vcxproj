@@ -106,6 +106,7 @@
   <ItemGroup>
     <ClCompile Include="Source\BuildingPlacer.cpp" />
     <ClCompile Include="Source\ContractManager.cpp" />
+    <ClCompile Include="Source\DefilerMicro.cpp" />
     <ClCompile Include="Source\HydraliskMicro.cpp" />
     <ClCompile Include="Source\MutaliskMicro.cpp" />
     <ClCompile Include="Source\ProductList.cpp" />
@@ -138,6 +139,7 @@
   <ItemGroup>
     <ClInclude Include="Source\BuildingPlacer.h" />
     <ClInclude Include="Source\ContractManager.h" />
+    <ClInclude Include="Source\DefilerMicro.h" />
     <ClInclude Include="Source\HydraliskMicro.h" />
     <ClInclude Include="Source\MutaliskMicro.h" />
     <ClInclude Include="Source\Product.h" />

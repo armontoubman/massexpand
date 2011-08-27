@@ -4,6 +4,7 @@
 
 class HighCommand;
 
+class DefilerMicro;
 class DroneMicro;
 class HydraliskMicro;
 class OverlordMicro;
@@ -23,6 +24,7 @@ private:
 
 	UnitGroup microdUnits;
 
+	DefilerMicro* defilerMicro;
 	DroneMicro* droneMicro;
 	HydraliskMicro* hydraliskMicro;
 	OverlordMicro* overlordMicro;
