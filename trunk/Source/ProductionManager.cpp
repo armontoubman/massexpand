@@ -731,14 +731,227 @@ void ProductionManager::updateListsAgainstTerranReinforcements()
 
 void ProductionManager::updateListsAgainstZerg()
 {
+	if(this->step == 1 && this->buildList.isEmpty() && this->wantList.isEmpty()) 
+	{
+		addBuild(BWAPI::UnitTypes::Zerg_Drone, 5);
+		//addWant(BWAPI::UnitTypes::Zerg_Drone, 9);
+		addBuild(BWAPI::UnitTypes::Zerg_Spawning_Pool);
+		addWant(BWAPI::UnitTypes::Zerg_Spawning_Pool);
+		addBuild(BWAPI::UnitTypes::Zerg_Drone, 2);
+		addBuild(BWAPI::UnitTypes::Zerg_Zergling, 3);
+		addWant(BWAPI::UnitTypes::Zerg_Lair);
+		addWant(BWAPI::UnitTypes::Zerg_Spire);
+		this->step = 2;
+	}
+	if(this->step == 2)
+	{
+		/*if( (nrOfOwn(BWAPI::UnitTypes::Zerg_Zergling) < 8) && (nrOfEnemy(BWAPI::UnitTypes::Zerg_Zergling) > 7) && (nrOfOwn(BWAPI::UnitTypes::Zerg_Sunken_Colony) < 2))
+		{
+			addBuild(BWAPI::UnitTypes::Zerg_Sunken_Colony);
+		}*/
+		if( (((nrOfEnemy(BWAPI::UnitTypes::Zerg_Hatchery)+nrOfEnemy(BWAPI::UnitTypes::Zerg_Lair)+nrOfEnemy(BWAPI::UnitTypes::Zerg_Hive)) == 0 || (nrOfEnemy(BWAPI::UnitTypes::Zerg_Hatchery)+nrOfEnemy(BWAPI::UnitTypes::Zerg_Lair)+nrOfEnemy(BWAPI::UnitTypes::Zerg_Hive)) == 2) && (nrOfEnemy(BWAPI::UnitTypes::Zerg_Mutalisk) == 0)) && buildList.count(BWAPI::UnitTypes::Zerg_Zergling)<2 && nrOfOwn(BWAPI::UnitTypes::Zerg_Zergling)<10 )
+		{
+			addBuild(BWAPI::UnitTypes::Zerg_Zergling);
+		}
+		//if( (nrOfEnemy(BWAPI::UnitTypes::Zerg_Mutalisk) > 3) && (nrOfOwn(BWAPI::UnitTypes::Zerg_Spire) == 0) )
+		//{
+		//	addWant(BWAPI::UnitTypes::Zerg_Evolution_Chamber);
+		//	addWant(BWAPI::UnitTypes::Zerg_Spore_Colony);
+		//}
+		/*if( nrOfEnemy(BWAPI::UnitTypes::Zerg_Hydralisk_Den) > 0)
+		{
+			buildExpand();
+		}*/
+		if( (nrOfEnemy(BWAPI::UnitTypes::Zerg_Spire) > 0) || ( ((nrOfEnemy(BWAPI::UnitTypes::Zerg_Hatchery)+nrOfEnemy(BWAPI::UnitTypes::Zerg_Lair)+nrOfEnemy(BWAPI::UnitTypes::Zerg_Hive)) == 1) && (nrOfOwn(BWAPI::UnitTypes::Zerg_Zergling) > 7) ))
+		{
+			addWant(BWAPI::UnitTypes::Zerg_Extractor);
+			addWant(BWAPI::UnitTypes::Zerg_Spire);
+		}
+		if ( ((nrOfEnemy(BWAPI::UnitTypes::Zerg_Hatchery)+nrOfEnemy(BWAPI::UnitTypes::Zerg_Lair)+nrOfEnemy(BWAPI::UnitTypes::Zerg_Hive)) == 2) && (nrOfEnemy(BWAPI::UnitTypes::Zerg_Spire) > 0) && ((nrOfOwn(BWAPI::UnitTypes::Zerg_Hatchery)+nrOfOwn(BWAPI::UnitTypes::Zerg_Lair)+nrOfOwn(BWAPI::UnitTypes::Zerg_Hive)) < 3) )
+		{
+			if ((nrOfOwn(BWAPI::UnitTypes::Zerg_Spire) > 0) && (nrOfOwn(BWAPI::UnitTypes::Zerg_Zergling) > 7) && !buildList.containsExpand())
+			{
+				buildExpand();
+			}
+			else
+			{
+				addWant(BWAPI::UnitTypes::Zerg_Extractor);
+				addWant(BWAPI::UnitTypes::Zerg_Spire);
+			}
+		}
+		if ((nrOfOwn(BWAPI::UnitTypes::Zerg_Hatchery)+nrOfOwn(BWAPI::UnitTypes::Zerg_Lair)+nrOfOwn(BWAPI::UnitTypes::Zerg_Hive)) > 2)
+		{
+			this->step = 3;
+		}
+
+	}
+	if(this->step == 3)
+	{
+		addWant(BWAPI::UnitTypes::Zerg_Hydralisk_Den);
+		if(!buildList.containsExpand())
+		{
+			buildExpand();
+		}
+	}
 }
 
 void ProductionManager::updateListsAgainstZergReinforcements()
 {
+	bool atleastonecompletedspire = false;
+	if(allEigenUnits()(Spire)(isCompleted).size() > 0)
+	{
+		atleastonecompletedspire = true;
+	}
+	if( nrOfOwn(BWAPI::UnitTypes::Zerg_Spire) > 0 && atleastonecompletedspire)
+	{
+		if( (nrOfOwn(BWAPI::UnitTypes::Zerg_Mutalisk)<5) && ((nrOfOwn(BWAPI::UnitTypes::Zerg_Zergling) < 6) || (nrOfOwn(BWAPI::UnitTypes::Zerg_Sunken_Colony) <1)) && (BWAPI::Broodwar->self()->gas() < 70) && buildList.count(BWAPI::UnitTypes::Zerg_Zergling)<3)
+		{
+			addBuild(BWAPI::UnitTypes::Zerg_Zergling);
+		}
+		else
+		{
+			if(nrOfOwn(BWAPI::UnitTypes::Zerg_Mutalisk) >= 11 && nrOfEnemy(BWAPI::UnitTypes::Zerg_Hydralisk) > 7 && buildList.count(BWAPI::UnitTypes::Zerg_Zergling)<3)
+			{
+				addBuild(BWAPI::UnitTypes::Zerg_Zergling, 3 - buildList.count(BWAPI::UnitTypes::Zerg_Zergling));
+			}
+			else
+			{
+				if (buildList.count(BWAPI::UnitTypes::Zerg_Mutalisk)<3)
+				{
+					addBuild(BWAPI::UnitTypes::Zerg_Mutalisk);
+				}
+			}
+		}
+	}
+	else 
+	{
+		bool spireExists = false;
+		BWAPI::Unit* lolspire = NULL;
+		if(allEigenUnits()(Spire).size() > 0)
+		{
+			spireExists = true;
+			lolspire = *allEigenUnits()(Spire).begin();
+		}
+		if (spireExists && lolspire->isBeingConstructed())
+		{
+			if(lolspire->getRemainingBuildTime() <= 0.5 * lolspire->getType().buildTime())
+			{
+				// dont do anything (eggs sparen), mogelijk werkt het niet eens, lol.. alle moeite voor nix :D
+			}
+			else
+			{
+				if ( ( (nrOfOwn(BWAPI::UnitTypes::Zerg_Zergling) >10) || ((nrOfOwn(BWAPI::UnitTypes::Zerg_Sunken_Colony) > 0) && (nrOfOwn(BWAPI::UnitTypes::Zerg_Zergling) >4))))
+				{
+					addBuild(BWAPI::UnitTypes::Zerg_Drone);
+				}
+				else
+				{
+					if (buildList.count(BWAPI::UnitTypes::Zerg_Zergling)<1)
+					{
+						addBuild(BWAPI::UnitTypes::Zerg_Zergling);
+					}
+				}
+			}
+		}
+		else
+		{
+			if( nrOfOwn(BWAPI::UnitTypes::Zerg_Hydralisk_Den) > 0)
+			{
+				if (nrOfOwn(BWAPI::UnitTypes::Zerg_Drone) >= ( 3*nrOfOwn(BWAPI::UnitTypes::Zerg_Extractor) + 5*nrOfOwn(BWAPI::UnitTypes::Zerg_Hatchery)) && (buildList.count(BWAPI::UnitTypes::Zerg_Hydralisk)<3))
+				{
+					addBuild(BWAPI::UnitTypes::Zerg_Hydralisk);
+				}
+			}
+			else
+			{
+				if ((nrOfOwn(BWAPI::UnitTypes::Zerg_Drone) >= ( 2*nrOfOwn(BWAPI::UnitTypes::Zerg_Extractor) + 4*(nrOfOwn(BWAPI::UnitTypes::Zerg_Hatchery)+nrOfOwn(BWAPI::UnitTypes::Zerg_Lair)+nrOfOwn(BWAPI::UnitTypes::Zerg_Hive)))) && (buildList.count(BWAPI::UnitTypes::Zerg_Zergling)<2) && nrOfOwn(BWAPI::UnitTypes::Zerg_Zergling)<17)
+				{
+					addBuild(BWAPI::UnitTypes::Zerg_Zergling);
+				}
+			}
+		}
+	}
 }
 
 void ProductionManager::updateListsUpgrades()
 {
+	int zerglingtotaal = allEigenUnits()(Zergling).size();
+	zerglingtotaal += countEggsMorphingInto(BWAPI::UnitTypes::Zerg_Zergling)*2;
+	if (zerglingtotaal > 10)
+	{
+		addWant(BWAPI::UpgradeTypes::Metabolic_Boost);
+	}
+	
+	if( ((nrOfOwn(BWAPI::UnitTypes::Zerg_Hydralisk) + nrOfOwn(BWAPI::UnitTypes::Zerg_Lurker)) * 2) >47 && buildList.count(BWAPI::UpgradeTypes::Zerg_Missile_Attacks)<1 )
+	{
+		addWant(BWAPI::UpgradeTypes::Zerg_Missile_Attacks); // research ranged ground dmg
+		addWant(BWAPI::UnitTypes::Zerg_Evolution_Chamber);
+	}
+
+	if( nrOfOwn(BWAPI::UnitTypes::Zerg_Hydralisk) > 11 && buildList.count(BWAPI::UpgradeTypes::Muscular_Augments)<1 )
+	{
+		addWant(BWAPI::UpgradeTypes::Muscular_Augments); // research hydralisk speed
+		addWant(BWAPI::UnitTypes::Zerg_Evolution_Chamber);
+	}
+	if( nrOfOwn(BWAPI::UnitTypes::Zerg_Hydralisk) > 19 && buildList.count(BWAPI::UpgradeTypes::Grooved_Spines)<1 )
+	{
+		addWant(BWAPI::UpgradeTypes::Grooved_Spines); // research range
+		addWant(BWAPI::UnitTypes::Zerg_Evolution_Chamber);
+	}
+
+	if( (nrOfOwn(BWAPI::UnitTypes::Zerg_Zergling)+nrOfOwn(BWAPI::UnitTypes::Zerg_Ultralisk)) > 39 && buildList.count(BWAPI::UpgradeTypes::Zerg_Melee_Attacks)<1 )
+	{
+		addWant(BWAPI::UpgradeTypes::Zerg_Melee_Attacks); // research melee ground damage
+		addWant(BWAPI::UnitTypes::Zerg_Evolution_Chamber);
+	}
+
+	if( BWAPI::Broodwar->self()->supplyUsed() > 180 && buildList.count(BWAPI::UpgradeTypes::Zerg_Carapace)<1 ) // >90 supply required (dubbel vanwege werking API)
+	{
+		addWant(BWAPI::UpgradeTypes::Zerg_Carapace); // upgrade ground armor
+		addWant(BWAPI::UnitTypes::Zerg_Evolution_Chamber);
+	}
+
+	if( BWAPI::Broodwar->self()->supplyUsed() > 90 && (nrOfOwn(BWAPI::UnitTypes::Zerg_Hydralisk) > 15 || nrOfOwn(BWAPI::UnitTypes::Zerg_Zergling) > 20) && buildList.count(BWAPI::TechTypes::Burrowing)<1 )
+	{
+		addWant(BWAPI::TechTypes::Burrowing);
+	}
+
+	if( nrOfOwn(BWAPI::UnitTypes::Zerg_Hive) > 0 )
+	{
+		if (buildList.count(BWAPI::UpgradeTypes::Zerg_Melee_Attacks)<1)
+		{
+			addWant(BWAPI::UpgradeTypes::Zerg_Melee_Attacks); // upgrade melee ground damage
+			addWant(BWAPI::UnitTypes::Zerg_Evolution_Chamber);
+		}
+		if (buildList.count(BWAPI::UpgradeTypes::Zerg_Carapace)<1)
+		{
+			addWant(BWAPI::UpgradeTypes::Zerg_Carapace); // upgrade ground armor
+			addWant(BWAPI::UnitTypes::Zerg_Evolution_Chamber);
+		}
+		if (buildList.count(BWAPI::UpgradeTypes::Adrenal_Glands)<1)
+		{
+			addWant(BWAPI::UpgradeTypes::Adrenal_Glands); // upgrade ground armor
+			addWant(BWAPI::UnitTypes::Zerg_Evolution_Chamber);
+		}
+		if( nrOfOwn(BWAPI::UnitTypes::Zerg_Ultralisk_Cavern) > 0 )
+		{
+			if (buildList.count(BWAPI::UpgradeTypes::Anabolic_Synthesis)<1)
+			{
+				addWant(BWAPI::UpgradeTypes::Anabolic_Synthesis); // research ultralisk speed
+			}
+			if (buildList.count(BWAPI::UpgradeTypes::Chitinous_Plating)<1)
+			{
+				addWant(BWAPI::UpgradeTypes::Chitinous_Plating); // research ultralisk armor
+			}
+		}
+		if( nrOfOwn(BWAPI::UnitTypes::Zerg_Defiler_Mound) > 0 )
+		{
+			if (buildList.count(BWAPI::TechTypes::Consume)<1)
+			{
+				addWant(BWAPI::TechTypes::Consume); // research sacrifice geval
+			}
+		}
+	}
 }
 
 void ProductionManager::updateListsGeneral()
