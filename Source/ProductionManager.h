@@ -56,9 +56,11 @@ private:
 	int nrOfOwnMilitaryUnits();
 	int nrOfEnemyMilitaryUnits();
 	int countEggsMorphingInto(BWAPI::UnitType unittype);
+	int nrOfOwnMorphing(BWAPI::UnitType unittype);
 	/* end intel */
 
 	void buildExpand();
 
 	int nrOfExtraDronesRequired();
+	bool wantListIsCompleted();
 };
