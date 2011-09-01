@@ -2,6 +2,11 @@
 #include "Product.h"
 #include <BWAPI.h>
 #include <list>
+/**
+ * ProductList the basis for the wantList and buildList in ProductionManager.
+ * \see ProductionManager
+ * \see Product
+ */
 class ProductList {
 public:
 	ProductList();

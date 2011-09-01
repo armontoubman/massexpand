@@ -3,6 +3,10 @@
 
 using namespace BWAPI;
 
+/**
+ * EigenUnitData holds extra data about our own units that is not provided by the game.
+ * \see EigenUnitDataManager
+ */
 class EigenUnitData
 {
 public:

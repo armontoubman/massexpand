@@ -15,6 +15,9 @@ struct ResourceData
 
 typedef boost::unordered_map<Unit*, ResourceData> ResourceMap ;
 
+/**
+ * The ResourceManager manages the mineral deposits and gas vents/extractors near our bases.
+ */
 class ResourceManager
 {
 public:
@@ -28,10 +31,18 @@ public:
 	std::list<Task> getTasklist(TaskType tasktype);
 private:
 	HighCommand* hc;
+
+	/**
+	 * Determine the owner of a resource.
+	 * \return 1 if it is ours, 0 if it is not.
+	 */
 	int resourceOwner(Unit* resource);
 	ResourceMap mineralmap;
 	ResourceMap geysermap;
 	ResourceMap extractormap;
+	/**
+	 * Count how many resources in the ResourceMap are ours.
+	 */
 	int countOurs(ResourceMap resources);
 	std::list<Task> gathermineralstasklist;
 	std::list<Task> gathergastasklist;
