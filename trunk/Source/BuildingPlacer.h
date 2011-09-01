@@ -1,7 +1,5 @@
 /*
 
-http://code.google.com/p/bwsal/
-
 The MIT License (MIT)
 
 Copyright (c) 2010 The writers of BWSAL
@@ -29,6 +27,10 @@ DEALINGS IN THE SOFTWARE.
 #pragma once
 #include <BWAPI.h>
 #include "RectangleArray.h"
+
+/**
+ * The BuildingPlacer class from BWSAL http://code.google.com/p/bwsal/
+ */
 class BuildingPlacer
 {
   public:

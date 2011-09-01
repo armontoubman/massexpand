@@ -1116,9 +1116,11 @@ void ProductionManager::updateListsGenericRule()
 		}
 		if(product.type == TechProduct)
 		{
+			// TODO
 		}
 		if(product.type == UpgradeProduct)
 		{
+			// TODO
 		}
 	}
 }

@@ -10,6 +10,9 @@ using namespace BWAPI;
 
 typedef boost::unordered_map<Unit*, EigenUnitData> EigenUnitMap ;
 
+/**
+ * The EigenUnitDataManager maintains additional data about our own units, such as when they were seen by enemies.
+ */
 class EigenUnitDataManager
 {
 public:
@@ -25,6 +28,9 @@ public:
 	void onUnitMorph(Unit* u);
 	void onUnitRenegade(Unit* u);
 
+	/**
+	 * Query if one of our units has been seen by the enemy.
+	 */
 	bool unitIsSeen(Unit* u);
 
 	std::string chat();

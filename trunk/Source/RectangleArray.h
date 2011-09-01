@@ -32,7 +32,7 @@ DEALINGS IN THE SOFTWARE.
 namespace Util
 {
   /**
-   * Template used for work with dynamically initialized array with dimension 2.
+   * From BWSAL http://code.google.com/p/bwsal/ Template used for work with dynamically initialized array with dimension 2.
    */
   template <class Type>
   class RectangleArray

@@ -4,6 +4,11 @@
 
 using namespace BWAPI;
 
+/**
+ * The TaskAssigner assigns Tasks to UnitGroups. The assignments are stored in a plan. Drones have a seperate plan.
+ * \see EigenUnitGroupManager
+ * \see Task
+ */
 class TaskAssigner
 {
 public:
@@ -11,6 +16,10 @@ public:
 	void update();
 	std::map<UnitGroup*, Task> getPlan();
 	std::map<BWAPI::Unit*, Task> getDronePlan();
+
+	/**
+	 * Find the Task that was assigned to the unit.
+	 */
 	Task getTaskOfUnit(BWAPI::Unit* unit);
 
 	void onUnitDestroy(Unit* u);
@@ -24,6 +33,10 @@ private:
 	void makePlan();
 	void assign(UnitGroup* ug, Task task);
 	void assignDrone(BWAPI::Unit*, Task task);
+	
+	/**
+	 * Find the most fitting task for the UnitGroup, with the preferred TaskType
+	 */
 	Task bestTask(UnitGroup* ug, TaskType tasktype);
 	bool taskIsAssigned(Task task);
 	int countDronesOnTask(Task task);

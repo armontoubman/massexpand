@@ -12,6 +12,9 @@ extern BWTA::Region* home;
 extern BWTA::Region* enemy_base;
 DWORD WINAPI AnalyzeThread();
 
+/**
+ * The ExampleAIModule is an example that comes with BWAPI http://code.google.com/p/bwapi/. We have adapted it to call methods of HighCommand, where the main loop and event listeners of our bot are.
+ */
 class ExampleAIModule : public BWAPI::AIModule
 {
 public:

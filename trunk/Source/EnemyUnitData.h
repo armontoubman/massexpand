@@ -3,6 +3,10 @@
 
 using namespace BWAPI;
 
+/**
+ * EnemyUnitData holds extra data about enemy units that is not provided by the game.
+ * \see EnemyUnitDataManager
+ */
 class EnemyUnitData
 {
 public:

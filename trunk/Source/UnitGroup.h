@@ -487,9 +487,27 @@ class UnitGroup : public std::set<BWAPI::Unit*>
     bool useTech(BWAPI::TechType tech, BWAPI::Unit* target) const;
 
 	// below are additions for MassExpand
+
+	/**
+	 * \class UnitGroup
+	 * UnitGroup class from BWSAL http://code.google.com/p/bwsal/
+	 */
+
+	/**
+	 * added for MassExpand
+	 */
 	bool move(BWAPI::Position target) const;
+	/**
+	 * added for MassExpand
+	 */
 	bool containsUnitOfType(BWAPI::UnitType unittype) const;
+	/**
+	 * added for MassExpand
+	 */
 	bool canReach(BWAPI::Position target) const;
+	/**
+	 * added for MassExpand
+	 */
 	bool containsOnlyAirUnits() const;
 };
 
