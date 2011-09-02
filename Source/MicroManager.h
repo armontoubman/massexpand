@@ -36,6 +36,7 @@ private:
 
 	/**
 	 * Group of units that has been microed (reset each frame).
+	 */
 	UnitGroup microdUnits;
 
 	DefilerMicro* defilerMicro;

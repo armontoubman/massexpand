@@ -78,4 +78,6 @@ public:
 	 * Equality comparison operator.
 	 */
 	bool operator==(const Product& other) const;
+
+	int base;
 };
