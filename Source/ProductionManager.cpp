@@ -1116,11 +1116,21 @@ void ProductionManager::updateListsGenericRule()
 		}
 		if(product.type == TechProduct)
 		{
-			// TODO
+			if(this->buildList.count(product.techtype) == 0 && !BWAPI::Broodwar->self()->hasResearched(product.techtype))
+			{
+				addBuild(product.techtype);
+			}
 		}
 		if(product.type == UpgradeProduct)
 		{
-			// TODO
+			if(this->buildList.count(product.upgradetype) == 0 && BWAPI::Broodwar->self()->getUpgradeLevel(product.upgradetype) < product.upgradetype.maxRepeats())
+			{
+				addBuild(product.upgradetype);
+			}
+		}
+		if(product.type == ExpandProduct)
+		{
+			// doesn't happen
 		}
 	}
 }
@@ -1340,7 +1350,7 @@ bool ProductionManager::wantListIsCompleted()
 	{
 		if(product.type == BuildProduct)
 		{
-			if(!done.count(product.buildtype) > 0)
+			if(done.count(product.buildtype) == 0)
 			{
 				int expected = this->wantList.count(product.buildtype);
 				done.insert(product.buildtype);
