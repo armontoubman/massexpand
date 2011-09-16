@@ -44,4 +44,5 @@ public:
   bool show_visibility_data;
 
   HighCommand* hc;
+  ~ExampleAIModule();
 };

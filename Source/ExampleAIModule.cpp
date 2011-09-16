@@ -55,8 +55,6 @@ void ExampleAIModule::onEnd(bool isWinner)
   {
     //log win to file
   }
-
-  delete this->hc;
 }
 
 void ExampleAIModule::onFrame()
@@ -385,4 +383,9 @@ void ExampleAIModule::showForces()
       Broodwar->printf("  - Player [%d]: %s",(*j)->getID(),(*j)->getName().c_str());
     }
   }
+}
+
+ExampleAIModule::~ExampleAIModule()
+{
+	delete this->hc;
 }
