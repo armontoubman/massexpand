@@ -68,6 +68,7 @@ void HighCommand::startLog()
 
 void HighCommand::update()
 {
+	this->eiudm->update();
 	this->eiugm->update();
 	this->rm->update();
 	this->eudm->update();
