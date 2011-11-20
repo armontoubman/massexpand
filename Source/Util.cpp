@@ -8,7 +8,7 @@
 #include <BWTA.h>
 #include "UnitGroup.h"
 char buffer[1024];
-void log(const char* text, ...)
+/*void log(const char* text, ...)
 {
   const int BUFFER_SIZE = 1024;
   char buffer[BUFFER_SIZE];
@@ -24,7 +24,7 @@ void log(const char* text, ...)
     fprintf_s(outfile, buffer);
     fclose(outfile);
   }
-}
+}*/
 
 std::string intToString(int i)
 {

@@ -46,7 +46,7 @@
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</LinkIncremental>
-    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(BWAPI)\include;$(IncludePath)</IncludePath>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(BWAPI)\include;$(IncludePath);$(BOOST)</IncludePath>
     <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(BWAPI)\lib;$(LibraryPath)</LibraryPath>
     <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(BWAPI)\include;$(IncludePath)</IncludePath>
     <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(BWAPI)\lib;$(LibraryPath)</LibraryPath>
@@ -108,6 +108,7 @@
     <ClCompile Include="Source\ContractManager.cpp" />
     <ClCompile Include="Source\DefilerMicro.cpp" />
     <ClCompile Include="Source\HydraliskMicro.cpp" />
+    <ClCompile Include="Source\Logger.cpp" />
     <ClCompile Include="Source\LurkerMicro.cpp" />
     <ClCompile Include="Source\MutaliskMicro.cpp" />
     <ClCompile Include="Source\ProductList.cpp" />
@@ -144,6 +145,7 @@
     <ClInclude Include="Source\ContractManager.h" />
     <ClInclude Include="Source\DefilerMicro.h" />
     <ClInclude Include="Source\HydraliskMicro.h" />
+    <ClInclude Include="Source\Logger.h" />
     <ClInclude Include="Source\LurkerMicro.h" />
     <ClInclude Include="Source\MutaliskMicro.h" />
     <ClInclude Include="Source\Product.h" />
