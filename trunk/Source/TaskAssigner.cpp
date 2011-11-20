@@ -4,6 +4,7 @@
 #include "HighCommand.h"
 #include "Task.h"
 #include "Util.h"
+#include "Logger.h"
 
 TaskAssigner::TaskAssigner(HighCommand* h)
 {
@@ -29,6 +30,7 @@ std::map<BWAPI::Unit*, Task> TaskAssigner::getDronePlan()
 
 void TaskAssigner::makePlan()
 {
+	//Logger::getInstance()->info("TA: enter makePlan()");
 	std::set<UnitGroup*> unitgroups = this->hc->eiugm->getUnitGroupSet();
 
 	for each(UnitGroup* ug in unitgroups)
@@ -100,6 +102,7 @@ void TaskAssigner::makePlan()
 			this->assign(ug, bestTask(ug, NoTask));
 		}
 	}
+	//Logger::getInstance()->info("TA: exit makePlan()");
 }
 
 void TaskAssigner::assign(UnitGroup* ug, Task task)
@@ -114,6 +117,7 @@ void TaskAssigner::assignDrone(BWAPI::Unit* unit, Task task)
 
 Task TaskAssigner::bestTask(UnitGroup* ug, TaskType tasktype)
 {
+	//Logger::getInstance()->info("TA: enter bestTask()");
 	std::map<TaskType, std::list<Task>> tasklists = this->hc->tm->getTasklists();
 	std::list<Task> idealTasks;
 	std::list<Task> goodTasks;
@@ -227,17 +231,21 @@ Task TaskAssigner::bestTask(UnitGroup* ug, TaskType tasktype)
 
 	if(idealTasks.size() > 0)
 	{
+		//Logger::getInstance()->info("TA: exit bestTask() - idealTask");
 		return this->nearestTask(ug->getCenter(), idealTasks);
 	}
 	if(goodTasks.size() > 0)
 	{
+		//Logger::getInstance()->info("TA: exit bestTask() - goodTask");
 		return this->nearestTask(ug->getCenter(), goodTasks);
 	}
 	if(badTasks.size() > 0)
 	{
+		//Logger::getInstance()->info("TA: exit bestTask() - badTask");
 		return this->nearestTask(ug->getCenter(), badTasks);
 	}
 	// hier mag hij niet komen
+	//Logger::getInstance()->error("TA: exit bestTask() - geen task");
 	return Task(ScoutTask, ug->getCenter());
 }
 

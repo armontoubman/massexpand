@@ -75,11 +75,11 @@ public:
 private:
 	void startLog();
 
-	void tic();
+	/*void tic();
 	float toc();
 	float c;
 	std::map<int, float> times;
-	void logtimes();
+	void logtimes();*/
 
 	/**
 	 * Draws the current number of frames per second on the screen.

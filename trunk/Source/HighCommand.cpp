@@ -17,12 +17,13 @@
 #include "UnitGroup.h"
 #include <time.h>
 #include <boost/format.hpp>
+#include "Logger.h"
 
 HighCommand::HighCommand()
 {
 
 	Broodwar->setLocalSpeed(0); // WEGHALEN IN FINAL
-	//this->startLog();
+	this->startLog();
 
 	this->home = BWAPI::Broodwar->self()->getStartLocation();
 
@@ -54,32 +55,33 @@ HighCommand::~HighCommand() {
 
 void HighCommand::startLog()
 {
-	log("\n\n\n\nNEW GAME\n\n");
-
-	time_t rawtime;
-	struct tm * timeinfo;
-
-	time ( &rawtime );
-	timeinfo = localtime ( &rawtime );
-	log("\n");
-	log(asctime(timeinfo));
-	log("\n");
+	Logger::getInstance()->info("HC: New game");
 }
 
 void HighCommand::update()
 {
+	//Logger::getInstance()->info("HC: eiudm->update()");
 	this->eiudm->update();
+	//Logger::getInstance()->info("HC: eiugm->update()");
 	this->eiugm->update();
+	//Logger::getInstance()->info("HC: rm->update()");
 	this->rm->update();
+	//Logger::getInstance()->info("HC: eudm->update()");
 	this->eudm->update();
-
+	
+	//Logger::getInstance()->info("HC: pm->update()");
 	this->pm->update();
+	//Logger::getInstance()->info("HC: csm->update()");
 	this->csm->update();
+	//Logger::getInstance()->info("HC: ctm->update()");
 	this->ctm->update();
-
+	
+	//Logger::getInstance()->info("HC: tm->update()");
 	this->tm->update();
+	//Logger::getInstance()->info("HC: ta->update()");
 	this->ta->update();
-
+	
+	//Logger::getInstance()->info("HC: mm->update()");
 	this->mm->update();
 
 	this->drawFPS();
@@ -88,7 +90,7 @@ void HighCommand::update()
 	this->drawRightPanel();
 }
 
-void HighCommand::tic()
+/*void HighCommand::tic()
 {
 	this->c = clock();
 }
@@ -110,7 +112,7 @@ void HighCommand::logtimes()
 	output.append(floatToString(times[6])).append(",");
 	output.append(floatToString(times[7])).append("\n");
 	log(output.c_str());
-}
+}*/
 
 void HighCommand::onStart()
 {

@@ -4,6 +4,7 @@
 #include "UnitGroup.h"
 #include "Util.h"
 #include <boost/format.hpp>
+#include "Logger.h"
 
 using namespace BWAPI;
 
@@ -53,7 +54,7 @@ Unit* Task::getTarget()
 	if(this->target == NULL)
 	{
 		std::string tname = this->getTypeName();
-		log(boost::str(boost::format("Task::getTarget() returns NULL with Task(type %s, x:%d y%d)\n") % tname % this->position.x() % this->position.y() ).c_str());
+		Logger::getInstance()->error(boost::str(boost::format("Task::getTarget() returns NULL with Task(type %s, x:%d y%d)\n") % tname % this->position.x() % this->position.y() ).c_str());
 	}
 	return this->target;
 }

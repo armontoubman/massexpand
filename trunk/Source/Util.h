@@ -4,7 +4,7 @@
 #include <BWTA.h>
 #include "UnitGroup.h"
 
-void log(const char* text, ...);
+//void log(const char* text, ...);
 std::string intToString(int i);
 std::string floatToString(float f);
 int dist(int d);
